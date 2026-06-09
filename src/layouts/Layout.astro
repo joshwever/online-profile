@@ -1,0 +1,307 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Josh Wever's personal profile, portfolio, and projects website. Driven by Astro, hosted on GitHub Pages." 
+} = Astro.props;
+
+// Determine base URL path for assets
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Best Practices -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Background Decorators for Ambient Glow -->
+    <div class="ambient-glow glow-1" aria-hidden="true"></div>
+    <div class="ambient-glow glow-2" aria-hidden="true"></div>
+    <div class="ambient-glow glow-3" aria-hidden="true"></div>
+
+    <header class="navbar" id="main-nav">
+      <div class="nav-container">
+        <a href={`${baseUrl}/`} class="nav-logo" id="nav-logo-link">
+          <span class="logo-symbol">&lt;</span>JW<span class="logo-symbol">/&gt;</span>
+        </a>
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="#about" class="nav-link" id="nav-link-about">About</a>
+          <a href="#skills" class="nav-link" id="nav-link-skills">Skills</a>
+          <a href="#projects" class="nav-link" id="nav-link-projects">Projects</a>
+          <a href="#contact" class="nav-link btn-contact" id="nav-link-contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <slot />
+    </main>
+
+    <footer class="footer" id="main-footer">
+      <div class="footer-container">
+        <p>&copy; {new Date().getFullYear()} Josh Wever. Built with Astro & Vanilla CSS. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://github.com/joshwever" target="_blank" rel="noopener noreferrer" class="footer-link" id="footer-github">GitHub</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link" id="footer-linkedin">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    /* Color Palette */
+    --bg-dark: #07090e;
+    --bg-card: rgba(15, 23, 42, 0.45);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.16);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --accent-blue: #0ea5e9;
+    --accent-indigo: #6366f1;
+    --accent-purple: #a855f7;
+    --accent-glow: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+    
+    /* Layout & Fonts */
+    --font-outfit: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    
+    --max-width: 1200px;
+    --header-height: 80px;
+    --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-dark);
+    color: var(--text-secondary);
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  /* Ambient Glow Blobs */
+  .ambient-glow {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    max-width: 600px;
+    max-height: 600px;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .glow-1 {
+    top: 5%;
+    left: -10%;
+    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+  }
+  .glow-2 {
+    top: 45%;
+    right: -10%;
+    background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+  }
+  .glow-3 {
+    bottom: 5%;
+    left: 20%;
+    background: radial-gradient(circle, var(--accent-indigo) 0%, transparent 70%);
+  }
+
+  /* Typography Utilities */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit);
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+  }
+
+  /* Navbar Styles */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(7, 9, 14, 0.7);
+    transition: var(--transition-smooth);
+  }
+
+  .nav-container {
+    max-width: var(--max-width);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: var(--font-outfit);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .nav-logo:hover {
+    transform: translateY(-1px);
+  }
+  .logo-symbol {
+    background: var(--accent-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.5rem 0;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-glow);
+    transition: var(--transition-smooth);
+  }
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .btn-contact {
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+  }
+  .btn-contact:hover {
+    background: var(--accent-glow);
+    border-color: transparent;
+    color: var(--bg-dark) !important;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.25);
+    transform: translateY(-2px);
+  }
+  .btn-contact::after {
+    display: none;
+  }
+
+  /* Main Content Layout */
+  .main-content {
+    flex: 1;
+    padding-top: var(--header-height);
+  }
+
+  /* Footer Styles */
+  .footer {
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(7, 9, 14, 0.9);
+    padding: 2.5rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-link:hover {
+    color: var(--text-primary);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .nav-menu {
+      gap: 1.5rem;
+    }
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

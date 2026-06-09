@@ -1,17 +1,681 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+// Projects data array
+const projects = [
+  {
+    title: "Order Fulfillment Modernization",
+    description: "Architected high-throughput supply chain and hub routing systems handling over 7.3M stock transfers in 90 days, supporting 350 Hub Stores in a DC/Hub/Spoke structure.",
+    tech: ["Java", "Spring Boot", "REST APIs", "Tomcat", "Linux"],
+    githubUrl: "https://github.com/joshwever",
+    category: "Architecture & Infrastructure"
+  },
+  {
+    title: "Returns & Basket JavaFX Transition",
+    description: "Led the modernization of core retail returns and basket workflows from legacy Swing to JavaFX, securing transaction flows managing an estimated $3B return volume.",
+    tech: ["JavaFX", "Spring Framework", "PostgreSQL", "Flyway"],
+    githubUrl: "https://github.com/joshwever",
+    category: "POS Client UI"
+  },
+  {
+    title: "Prioritized Parts Sourcing 2.0",
+    description: "Engineered an enhanced JavaFX Suggested Sourcing UI maximizing automated parts sourcing and direct transaction checkouts, reducing manual override errors.",
+    tech: ["JavaFX", "Spring Boot", "PostgreSQL", "Bash"],
+    githubUrl: "https://github.com/joshwever",
+    category: "Workflow Automation"
+  }
+];
+
+// Experience data array
+const experience = [
+  {
+    role: "Principal Engineer",
+    company: "O'Reilly Auto Parts",
+    period: "2026 - Present",
+    bullets: [
+      "Leading a team of 10 engineers in an Agile environment to modernize and streamline overarching Order Fulfillment systems.",
+      "Architecting Hub Routing, Manifest Generation, and Mobile Order Fulfillment staging/history flows across a network of ~350 Hub Stores in a DC/Hub/Spoke structure.",
+      "Owning Electronic Ordering services and message-driven integrations supporting 200 to 2,000 daily stock transfers per hub, successfully managing over 7.3M transfers in 90 days.",
+      "Designing high-volume data replication, endpoints, sync metrics, and retail integration layer structures to ensure corporate system consistency."
+    ]
+  },
+  {
+    role: "Senior Software Engineer",
+    company: "O'Reilly Auto Parts",
+    period: "2021 - 2026",
+    bullets: [
+      "Led a team of 4 in a Product-Led Development framework to modernize legacy Returns and Basket workflows, transitioning legacy Swing applications to a stable JavaFX UI.",
+      "Optimized Warranty, Proration, and Return handling flows designed to efficiently manage an estimated $3B retail/professional return volume.",
+      "Led a team of 3 to execute role-based access control and user-role rollout initiatives governed by feature flags and SOX compliance.",
+      "Enhanced Order Maintenance 2.0 workflows migrating legacy systems to process ~200,000 daily store orders valued at ~$2M/day."
+    ]
+  },
+  {
+    role: "Software Engineer",
+    company: "O'Reilly Auto Parts",
+    period: "2016 - 2021",
+    bullets: [
+      "Contributed to the multi-year modernization of retail ordering and sourcing workflows across the Priority Parts 2.0 ecosystem using a Rapid Iterative Waterfall model.",
+      "Engineered an enhanced JavaFX Suggested Sourcing UI that maximized employee efficiency and minimized reliance on manual overrides.",
+      "Conducted MySQL to Postgres data migrations as part of transitioning legacy Swing applications to JavaFX."
+    ]
+  },
+  {
+    role: "Senior Programmer / Analyst",
+    company: "O'Reilly Auto Parts",
+    period: "2013 - 2016",
+    bullets: [
+      "Led a 2-engineer team to build a Backbone.js Single Page Application (SPA), replacing legacy surveying software for store-level metrics.",
+      "Directed 3 engineers to modernize the in-house training system, migrating Flash modules to HTML5 and achieving SCORM compliance."
+    ]
+  },
+  {
+    role: "Programmer / Analyst",
+    company: "O'Reilly Auto Parts",
+    period: "2010 - 2013",
+    bullets: [
+      "Migrated internal training software from a legacy Struts architecture to a modern Spring/JSP web application.",
+      "Transitioned the corporate Intranet application (TeamNet) from Lotus Notes to a custom Spring/JSP-based web application."
+    ]
+  },
+  {
+    role: "Software Engineer",
+    company: "Quikdine.com",
+    period: "2006 - 2010",
+    bullets: [
+      "Built custom web services using ASP.NET 3.5 and MySQL to drive an AJAX web application for a food delivery startup.",
+      "Integrated Authorize.net payment gateways to securely process real-time credit card transactions."
+    ]
+  }
+];
+
+// Skills data grouped
+const skillCategories = [
+  {
+    name: "Languages & Frameworks",
+    skills: ["Java", "Spring Boot", "Spring Framework", "JavaFX", "Spock", "Mockito", "Backbone.js", "ASP.NET 3.5"]
+  },
+  {
+    name: "Databases & Systems",
+    skills: ["PostgreSQL", "MySQL", "Oracle (R12)", "Tomcat", "Linux (Ubuntu/WSL2)", "Flyway"]
+  },
+  {
+    name: "Workflows & SDLC",
+    skills: ["Git & GitHub", "Gradle", "Jenkins", "Agile/Scrum", "SOX Compliance", "Feature Flags", "Obsidian"]
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Joshua Kelly Wever | Principal Engineer Portfolio" description="Professional portfolio of Joshua Kelly Wever, Principal Engineer driving the architectural modernization of retail POS and order fulfillment ecosystems.">
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-container">
+      <div class="hero-badge" id="hero-badge">
+        <span class="badge-dot"></span> Principal Engineer @ O'Reilly Auto Parts
+      </div>
+      <h1 class="hero-title" id="main-hero-title">
+        Modernizing enterprise scale <span class="gradient-text">POS and Order Fulfillment</span> systems.
+      </h1>
+      <p class="hero-subtitle">
+        I drive architectural modernization of retail ecosystems processing ~$15B in annual sales. Leading teams to design, scale, and secure high-throughput supply chain networks supporting over 93,000 daily users.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn-primary" id="btn-hero-experience">Read Experience</a>
+        <a href="#projects" class="btn-secondary" id="btn-hero-projects">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">01. Profile</span>
+        <h2 class="section-title">Professional Summary</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card glass-card">
+          <p class="about-text">
+            I am a **Principal Engineer** with a passion for designing resilient systems, refining developer tooling, and modernizing legacy infrastructures. Over my career, I've led cross-functional teams to design, scale, and secure high-throughput supply chain and POS systems in Agile environments.
+          </p>
+          <p class="about-text">
+            My experience spans full-stack Java/Spring backend orchestration, JavaFX desktop UI development, large-scale database migrations (MySQL to Postgres), and feature-flagged deployments that guarantee zero-downtime rollouts at a national scale.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section skills-section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">02. Toolkit</span>
+        <h2 class="section-title">Technical Expertise</h2>
+      </div>
+      <div class="skills-grid">
+        {skillCategories.map((category, index) => (
+          <div class="skill-card glass-card" key={index}>
+            <h3 class="skill-category-title">{category.name}</h3>
+            <ul class="skill-list" aria-label={`Skills in ${category.name}`}>
+              {category.skills.map((skill) => (
+                <li class="skill-item" key={skill}>
+                  <span class="skill-icon">&rarr;</span> {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section experience-section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">03. Career Path</span>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+      <div class="experience-timeline">
+        {experience.map((job, index) => (
+          <div class="timeline-item glass-card" key={index} id={`exp-item-${index}`}>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">{job.role}</h3>
+                <h4 class="timeline-company">{job.company}</h4>
+              </div>
+              <span class="timeline-period">{job.period}</span>
+            </div>
+            <ul class="timeline-bullets" aria-label={`Achievements as ${job.role} at ${job.company}`}>
+              {job.bullets.map((bullet, idx) => (
+                <li class="timeline-bullet" key={idx}>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section projects-section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">04. Showcase</span>
+        <h2 class="section-title">Featured Solutions</h2>
+      </div>
+      <div class="projects-grid">
+        {projects.map((project, index) => (
+          <article class="project-card glass-card" key={index} id={`project-card-${index}`}>
+            <div class="project-meta">
+              <span class="project-category">{project.category}</span>
+              <a href={project.githubUrl} class="project-github-link" aria-label={`View ${project.title} on GitHub`} target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+            </div>
+            <h3 class="project-title">{project.title}</h3>
+            <p class="project-description">{project.description}</p>
+            <div class="project-tech-list">
+              {project.tech.map((techItem) => (
+                <span class="tech-badge" key={techItem}>{techItem}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact-section" id="contact">
+    <div class="container contact-container">
+      <div class="section-header text-center">
+        <span class="section-pre">05. Connection</span>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+      <div class="contact-card glass-card">
+        <p class="contact-description">
+          Feel free to reach out to discuss enterprise architecture, POS modernizations, developer setup integrations, or potential opportunities.
+        </p>
+        <div class="contact-actions">
+          <a href="mailto:joshwever@gmail.com" class="btn-primary" id="btn-email-contact">Send Email</a>
+          <div class="social-links">
+            <a href="https://github.com/joshwever" target="_blank" rel="noopener noreferrer" class="social-link-item" id="contact-github-link">GitHub</a>
+            <span class="divider">/</span>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link-item" id="contact-linkedin-link">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Global Layout Utilities */
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section {
+    padding: 7rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-pre {
+    font-family: var(--font-mono);
+    color: var(--accent-blue);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  /* Glassmorphic Cards */
+  .glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: var(--transition-smooth);
+  }
+  .glass-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Gradient Text Utility */
+  .gradient-text {
+    background: var(--accent-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Buttons */
+  .btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-primary {
+    background: var(--accent-glow);
+    color: var(--bg-dark);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.35);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    margin-left: 1rem;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: calc(85vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+  }
+
+  .hero-container {
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(14, 165, 233, 0.1);
+    color: var(--accent-blue);
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    margin-bottom: 2rem;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .hero-title {
+    font-size: 3.75rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+  }
+
+  /* About Section */
+  .about-card {
+    max-width: 900px;
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+  .about-text:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Skills Section */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .skill-category-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .skill-item {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-icon {
+    color: var(--accent-blue);
+    font-size: 0.85rem;
+  }
+
+  /* Experience Section */
+  .experience-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+  }
+
+  .timeline-item {
+    border-left: 2px solid rgba(14, 165, 233, 0.3);
+    border-radius: 0 16px 16px 0;
+    padding-left: 3rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 2.75rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    border: 2px solid var(--bg-dark);
+    box-shadow: 0 0 10px var(--accent-blue);
+    transition: var(--transition-smooth);
+  }
+  .timeline-item:hover::before {
+    background-color: var(--accent-purple);
+    box-shadow: 0 0 12px var(--accent-purple);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .timeline-role {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-company {
+    font-size: 1.1rem;
+    color: var(--accent-blue);
+    font-weight: 500;
+  }
+
+  .timeline-period {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .timeline-bullet {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .timeline-bullet::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+  }
+
+  /* Projects Section */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-category {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--accent-purple);
+    font-weight: 500;
+  }
+
+  .project-github-link {
+    color: var(--text-muted);
+  }
+  .project-github-link:hover {
+    color: var(--text-primary);
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    flex: 1;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .project-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tech-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  /* Contact Section */
+  .contact-container {
+    max-width: 700px;
+  }
+
+  .contact-card {
+    text-align: center;
+  }
+
+  .contact-description {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+
+  .contact-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    align-items: center;
+  }
+
+  .social-link-item {
+    color: var(--text-secondary);
+  }
+  .social-link-item:hover {
+    color: var(--accent-blue);
+  }
+
+  .divider {
+    color: var(--text-muted);
+  }
+
+  /* Keyframe Animations */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.25);
+      opacity: 0.5;
+    }
+  }
+
+  /* Responsive Layouts */
+  @media (max-width: 1024px) {
+    .projects-grid, .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.75rem;
+      letter-spacing: -1px;
+    }
+    .projects-grid, .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    .timeline-item {
+      padding-left: 1.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .btn-secondary {
+      margin-left: 0;
+    }
+    .section {
+      padding: 5rem 0;
+    }
+  }
+</style>
